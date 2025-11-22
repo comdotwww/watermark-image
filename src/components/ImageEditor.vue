@@ -19,12 +19,13 @@
 </template>
 
 <script setup>
-import { ref, defineProps, defineEmits, onMounted, watch } from 'vue'
+import { ref, defineProps, defineEmits, onMounted, watch, getCurrentInstance } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { ElMessage } from 'element-plus'
 import { fabric } from 'fabric'
 
 const { t } = useI18n()
+const appContext = getCurrentInstance()
+const $message = appContext?.appContext.config.globalProperties.$message
 
 const props = defineProps({
   watermarkConfig: {
@@ -122,7 +123,12 @@ const handleFileChange = (file) => {
   
   fileReader.onerror = (error) => {
     console.error('图片读取错误:', error)
-    ElMessage.error(t('alert.imageLoadFailed'))
+    // 使用全局的ElMessage或备选方案
+    if ($message) {
+      $message.error(t('alert.imageLoadFailed'))
+    } else if (window.ElMessage) {
+      window.ElMessage.error(t('alert.imageLoadFailed'))
+    }
   }
   
   fileReader.readAsDataURL(file.raw)
@@ -231,10 +237,19 @@ const downloadImage = () => {
     // 清理
     URL.revokeObjectURL(link.href)
     
-    ElMessage.success(t('alert.downloadSuccess'))
+    // 使用全局的 ElMessage 或备选方案
+    if ($message) {
+      $message.success(t('alert.downloadSuccess'))
+    } else if (window.ElMessage) {
+      window.ElMessage.success(t('alert.downloadSuccess'))
+    }
   } catch (error) {
     console.error('下载失败:', error)
-    ElMessage.error(t('alert.downloadFailed'))
+    if ($message) {
+      $message.error(t('alert.downloadFailed'))
+    } else if (window.ElMessage) {
+      window.ElMessage.error(t('alert.downloadFailed'))
+    }
   }
 }
 

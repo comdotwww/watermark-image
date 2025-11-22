@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import { ElMessage } from 'element-plus'
 import i18n from './i18n'
 import App from './App.vue'
 
@@ -14,6 +15,8 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 
 // 全局注册ElMessage
 app.config.globalProperties.$message = ElMessage
+// 也可以直接挂载到window对象（备选方案）
+// window.ElMessage = ElMessage
 
 app.use(ElementPlus)
 app.use(i18n)
