@@ -30,7 +30,7 @@
 
       <el-footer>
         <div class="footer-content">
-          © 2025 MarkImg Clone | 基于Vue3 + Fabric.js构建
+          © 2025 watermark-image
         </div>
       </el-footer>
     </el-container>
