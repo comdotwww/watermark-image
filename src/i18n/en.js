@@ -23,5 +23,13 @@ export default {
     language: 'Language',
     english: 'English',
     chinese: 'Chinese'
+  },
+  alert: {
+    watermarkApplied: 'Watermark applied successfully',
+    pleaseUploadImage: 'Please upload an image first',
+    pleaseAddWatermark: 'Please upload an image and add watermark first',
+    imageLoadFailed: 'Image load failed, please try another image',
+    downloadSuccess: 'Image downloaded successfully',
+    downloadFailed: 'Image download failed, please try again'
   }
 }

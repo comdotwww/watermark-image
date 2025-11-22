@@ -23,5 +23,13 @@ export default {
     language: '语言',
     english: '英文',
     chinese: '中文'
+  },
+  alert: {
+    watermarkApplied: '水印已应用',
+    pleaseUploadImage: '请先上传图片',
+    pleaseAddWatermark: '请先上传图片并添加水印',
+    imageLoadFailed: '图片加载失败，请尝试其他图片',
+    downloadSuccess: '图片下载成功',
+    downloadFailed: '图片下载失败，请重试'
   }
 }

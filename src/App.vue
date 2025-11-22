@@ -30,7 +30,7 @@
 
       <el-footer>
         <div class="footer-content">
-          © 2025 watermark-image
+          © 2025 MarkImg Clone | 基于Vue3 + Fabric.js构建
         </div>
       </el-footer>
     </el-container>
@@ -39,9 +39,13 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { ElMessage } from 'element-plus'
 import ImageEditor from './components/ImageEditor.vue'
 import WatermarkSettings from './components/WatermarkSettings.vue'
 import LanguageSelector from './components/LanguageSelector.vue'
+
+const { t } = useI18n()
 
 const imageEditorRef = ref(null)
 const hasImage = ref(false)
@@ -61,11 +65,20 @@ const handleImageLoaded = (status) => {
 }
 
 const handleApplyWatermark = () => {
-  imageEditorRef.value?.applyWatermark()
+  if (imageEditorRef.value) {
+    imageEditorRef.value.applyWatermark()
+    ElMessage.success(t('alert.watermarkApplied'))
+  } else {
+    ElMessage.warning(t('alert.pleaseUploadImage'))
+  }
 }
 
 const handleDownloadImage = () => {
-  imageEditorRef.value?.downloadImage()
+  if (imageEditorRef.value && imageEditorRef.value.hasImage) {
+    imageEditorRef.value.downloadImage()
+  } else {
+    ElMessage.warning(t('alert.pleaseAddWatermark'))
+  }
 }
 </script>
 
