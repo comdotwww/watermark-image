@@ -1,2 +1,2 @@
 # watermark-image
-Image Watermark Add
+Image Watermark Operator

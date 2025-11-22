@@ -1,28 +1,25 @@
-# Angular specific
-/dist/
-/out-tsc/
-/tmp/
-/coverage/
-/e2e/test-output/
-/.angular/
-.angular/
+# 忽略 node_modules 目录
+node_modules/
 
-# Node modules and dependency files
-/node_modules/
-/package-lock.json
-/yarn.lock
+# 忽略构建和分发目录
+/dist
+/build
 
-# Environment files
-/.env
-
-# Angular CLI and build artefacts
-/.angular-cli.json
-/.ng/
-
-# TypeScript cache
-*.tsbuildinfo
-
-# Logs
+# 忽略日志文件
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# 忽略 IDE 和编辑器特定文件
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 忽略其他
+.env
+.env.*
+!.env.example
