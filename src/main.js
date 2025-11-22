@@ -1,17 +1,12 @@
 import { createApp } from 'vue'
-import ElementPlus from 'element-plus'
-import 'element-plus/dist/index.css'
-import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-import i18n from './i18n'
 import App from './App.vue'
+import { createI18n } from 'vue-i18n'
+import messages from './locales'
 
-const app = createApp(App)
+const i18n = createI18n({
+  locale: 'en',
+  fallbackLocale: 'en',
+  messages
+})
 
-// 注册Element Plus图标
-for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-  app.component(key, component)
-}
-
-app.use(ElementPlus)
-app.use(i18n)
-app.mount('#app')
+createApp(App).use(i18n).mount('#app')
